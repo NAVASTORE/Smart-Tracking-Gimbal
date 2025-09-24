@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Tracking Gimbal - AZIZI.STORE</title>
+    <meta name="description" content="Nggak perlu kameramen lagi! Dengan Smart Tracking Gimbal, gerakanmu selalu on frame. Cocok buat vlogger, live seller, hingga creator yang ingin hasil konten lebih profesional.">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <!-- Anime.js for micro-interactions -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    
+    <!-- OrderOnline Embed CSS Override -->
+    <style>
+        /* Custom fonts */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Glassmorphism form styling */
+        .glass-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Gradient background */
+        .gradient-bg {
+            background: linear-gradient(135deg, #000000 0%, #4a4a4a 100%);
+        }
+        
+        /* Pricing section */
+        .price-original {
+            text-decoration: line-through;
+            color: #9a9a9a;
+        }
+        
+        .price-discount {
+            color: #ffffff;
+            font-weight: 700;
+        }
+        
+        /* Social proof popup */
+        .social-proof-popup {
+            position: fixed;
+            top: 20px;
+            right: -400px;
+            z-index: 9999;
+            width: 320px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-left: 4px solid #c0c0c0;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 8px;
+            transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .social-proof-popup.show {
+            right: 20px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Product gallery */
+        .product-gallery img {
+            transition: transform 0.3s ease;
+        }
+        
+        .product-gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            background: linear-gradient(to right, #4a4a4a, #000000);
+            color: white;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Features icons */
+        .feature-icon {
+            background: rgba(192, 192, 192, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        /* Trust badges */
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .social-proof-popup {
+                width: 280px;
+                top: 10px;
+                right: -320px;
+            }
+            
+            .social-proof-popup.show {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Social Proof Popup -->
+    <div id="socialProofPopup" class="social-proof-popup">
+        <img src="https://i.pinimg.com/736x/04/d8/ce/04d8ce95c9bd583e53e762d8803e6bad.jpg" alt="Customer" class="avatar">
+        <div>
+            <p id="popupText" class="text-sm font-medium">Putri dari Jakarta baru saja memesan Smart Tracking Gimbal</p>
+            <p class="text-xs text-gray-500 mt-1"><span id="popupTime">5 menit yang lalu</span></p>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative gradient-bg text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://www.starstartree.com/cdn/shop/files/552408c7-17c2-4695-d44c-c988eb6bd100_1400x.jpg?v=1743398293" alt="Smart Tracking Gimbal" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-4 py-24 md:py-32 relative z-10">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4" data-aos="fade-up">
+                    Smart Tracking Gimbal
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-gray-200" data-aos="fade-up" data-aos-delay="100">
+                    Nggak perlu kameramen lagi! Dengan Smart Tracking Gimbal, gerakanmu selalu on frame.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 mb-10" data-aos="fade-up" data-aos-delay="200">
+                    <div class="trust-badge">
+                        <i data-feather="shield" class="w-4 h-4"></i>
+                        <span>Garansi Resmi</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i data-feather="truck" class="w-4 h-4"></i>
+                        <span>Gratis Ongkir</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i data-feather="rotate-ccw" class="w-4 h-4"></i>
+                        <span> Hari Pengembalian</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="300">
+                    <button onclick="document.getElementById('orderSection').scrollIntoView({behavior: 'smooth'})" class="cta-button flex items-center justify-center gap-2">
+                        <i data-feather="shopping-cart"></i>
+                        Pesan Sekarang
+                    </button>
+                    <button onclick="document.getElementById('featuresSection').scrollIntoView({behavior: 'smooth'})" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-black transition duration-300">
+                        Lihat Fitur
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Lihat Lebih Dekat</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Smart Tracking Gimbal dirancang untuk memberikan hasil video terbaik dengan teknologi stabilisasi canggih.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="product-gallery" data-aos="fade-right">
+                    <img src="https://www.starstartree.com/cdn/shop/files/552408c7-17c2-4695-d44c-c988eb6bd100_1400x.jpg?v=1743398293" alt="Smart Tracking Gimbal" class="w-full rounded-xl shadow-lg">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 product-gallery" data-aos="fade-left">
+                    <img src="https://www.starstartree.com/cdn/shop/files/844a4d43-ed62-4794-0370-6c6098e60900_1400x.jpg?v=1743398293" alt="Detail 1" class="rounded-lg shadow-md">
+                    <img src="https://cdn.shopify.com/s/files/1/0873/0440/5294/files/image_5_84c874dd-2433-440b-9911-b3ddd37f7bc7.jpg?v=1743059689" alt="Detail 2" class="rounded-lg shadow-md">
+                    <img src="https://www.starstartree.com/cdn/shop/files/3dd4badb-4827-4bfc-395d-3cd8567a7800_1400x.jpg?v=1743398291" alt="Detail 3" class="rounded-lg shadow-md">
+                    <img src="https://www.starstartree.com/cdn/shop/files/4e33411c-ff74-4400-3bac-14d857eb8800_1400x.jpg?v=1743398291" alt="Detail 4" class="rounded-lg shadow-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="featuresSection" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Fitur Unggulan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Teknologi canggih yang membuat kontenmu terlihat profesional</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up">
+                    <div class="feature-icon mx-auto">
+                        <i data-feather="target" class="w-8 h-8 text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Auto Tracking</h3>
+                    <p class="text-gray-600">Mengikuti wajah dan objek secara otomatis tanpa kameramen</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon mx-auto">
+                        <i data-feather="layers" class="w-8 h-8 text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Stabilizer 3-Axis</h3>
+                    <p class="text-gray-600">Hasil video yang mulus tanpa guncangan</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon mx-auto">
+                        <i data-feather="smartphone" class="w-8 h-8 text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Ringan & Portabel</h3>
+                    <p class="text-gray-600">Desain kompak yang mudah dibawa kemana saja</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon mx-auto">
+                        <i data-feather="video" class="w-8 h-8 text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Ideal untuk Kreator</h3>
+                    <p class="text-gray-600">Cocok untuk vlog, live streaming, dan content creation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Promo -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Penawaran Spesial Hari Ini!</h2>
+                
+                <div class="bg-white bg-opacity-10 rounded-2xl p-8 mb-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                        <div>
+                            <p class="text-gray-300 mb-2">Harga Normal</p>
+                            <p class="price-original text-2xl">Rp 370.594</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="bg-red-500 text-white px-4 py-1 rounded-full text-sm font-bold inline-block mb-2">
+                                50% OFF
+                            </div>
+                            <p class="text-gray-300 mb-2">Harga Spesial</p>
+                            <p class="price-discount text-4xl font-extrabold">Rp 185.297</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <button onclick="document.getElementById('orderSection').scrollIntoView({behavior: 'smooth'})" class="cta-button text-lg px-10 py-5">
+                        Pesan Sekarang Sebelum Ke Habisan!
+                    </button>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-6 mt-10">
+                    <div class="flex items-center gap-2">
+                        <i data-feather="check-circle" class="text-green-400"></i>
+                        <span>Garansi Resmi 1 Minggu</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-feather="check-circle" class="text-green-400"></i>
+                        <span>Pengiriman Gratis Seluruh Indonesia</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-feather="check-circle" class="text-green-400"></i>
+                        <span>COD Tersedia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="orderSection" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Pesan Sekarang</h2>
+                    <p class="text-gray-600">Isi form di bawah ini untuk memesan Smart Tracking Gimbal</p>
+                </div>
+                
+                <div class="glass-form rounded-2xl p-8 shadow-xl" data-aos="fade-up">
+                    <!-- OrderOnline Embed Code - v8.0.4 -->
+                    <div class="ooef">
+                        <form class="orderonline-embed-form" data-username="nava" data-product-slug="smart-tracking-gimbal" data-product-id="68d40d5d84ee3197f90c3c16" id="oo-embed-form-smart-tracking-gimbal-6683" data-origin="orderonline">
+                            <div class="ooef-loader">
+                                <style>
+                                    .ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}
+                                    @keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}
+                                    @-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}
+                                    .ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}
+                                    .ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}
+                                    .ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}
+                                    @-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}
+                                    @keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}
+                                </style>
+                                <div aria-live="polite" role="status">
+                                    <div>Loading...</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <script>
+                        if (typeof xLogError != 'function') {
+                            var xLogError = function (error) {
+                                var req = new XMLHttpRequest();
+                                var payload = JSON.stringify({ url: document.location.href, line: error.line, stack: error.stack });
+                                var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                                req.open('POST', 'https://api.orderonline.id/log', true);
+                                req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                                req.send(params);
+                            };
+                        }
+                        try {
+                            if (typeof xEmbedScript != 'function') {
+                                var xEmbedScript = function () {
+                                    !function(w, d, e, v, id, t, s) {
+                                        if (d.getElementById(id)) return;
+                                        t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                        s = d.getElementsByTagName(e)[0];
+                                        s.parentNode.insertBefore(t, s);
+                                    }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                                };
+                            }
+                            if (typeof xEmbedInit != 'function') {
+                                var xEmbedInit = function (w, n) {
+                                    if (w.ooe) return;
+                                    n = w.ooe = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+                                    if (!w._ooe) w._ooe = n;
+                                    n.push = n;n.loaded = !0;n.version = '8.0.4';
+                                    n.queue = [];
+                                };
+                            }
+                            xEmbedInit(window);
+                            ooe('setup', 'redirect', 'https://nava.orderonline.id');
+                            ooe('init', '5f119cd08dcbdb2737678706', '68d40d5d84ee3197f90c3c16', '68d40d5d84ee3197f90c3c17', 'oo-embed-form-smart-tracking-gimbal-6683', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":true,"triggerGtm":true});
+                            if (!window.jQuery) {
+                                !function(w, d, e, v, id, t, s) {
+                                    if (d.getElementById(id)) return;
+                                    t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                    t.addEventListener('load', xEmbedScript);
+                                    s = d.getElementsByTagName(e)[0];
+                                    s.parentNode.insertBefore(t, s);
+                                }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+                            } else {
+                                xEmbedScript();
+                            }
+                        } catch (e) {
+                            xLogError(e);
+                            throw e;
+                        }
+                    </script>
+                    <!-- End OrderOnline Embed Code -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Scripts -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Social Proof Popup System
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('socialProofPopup');
+            const popupText = document.getElementById('popupText');
+            const popupTime = document.getElementById('popupTime');
+            
+            // Customer data
+            const customers = ['Putri', 'Indira', 'Kalea', 'Naila', 'Dinda', 'Pasya', 'Devi'];
+            const cities = ['Jakarta', 'Semarang', 'Malang', 'Cirebon', 'Bandung', 'Solo', 'Batu'];
+            
+            let popupTimeout;
+            let hideTimeout;
+            
+            function showPopup() {
+                // Get random customer and city
+                const randomIndex = Math.floor(Math.random() * customers.length);
+                const customerName = customers[randomIndex];
+                const customerCity = cities[randomIndex];
+                
+                // Set random time (1-15 minutes ago)
+                const minutesAgo = Math.floor(Math.random() * 15) + 1;
+                
+                // Update popup content
+                popupText.textContent = `${customerName} dari ${customerCity} baru saja memesan Smart Tracking Gimbal`;
+                popupTime.textContent = `${minutesAgo} menit yang lalu`;
+                
+                // Show popup with animation
+                popup.classList.add('show');
+                
+                // Auto-hide after 5 seconds
+                hideTimeout = setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 5000);
+            }
+            
+            // Show popup every 8 seconds
+            popupTimeout = setInterval(showPopup, 8000);
+            
+            // Pause auto-hide on hover
+            popup.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+            });
+            
+            // Resume auto-hide when mouse leaves
+            popup.addEventListener('mouseleave', () => {
+                hideTimeout = setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 2000);
+            });
+            
+            // Show first popup after 3 seconds
+            setTimeout(showPopup, 3000);
+        });
+        
+        // Sticky CTA on scroll
+        window.addEventListener('scroll', function() {
+            const ctaButton = document.querySelector('.sticky-cta');
+            if (!ctaButton) return;
+            
+            if (window.scrollY > 300) {
+                ctaButton.classList.add('show');
+            } else {
+                ctaButton.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
